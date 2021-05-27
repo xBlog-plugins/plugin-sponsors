@@ -7,7 +7,7 @@
     .post-block{padding:0 18px}
     .donate-table .table-img{position:absolute;width:12em;top:-28px;z-index:2;left:23%}
     .donate-table .table-right-top{position:absolute;top:11px;z-index:2;width:6em;right:-11px}
-    .choose-title{position:absolute;bottom:3%;left:19%}
+    .choose-title{position:absolute;bottom:3%;left:12%}
     .alipay{background-image:url({{.server}}/images/big.png)}
     .donate-box .choose-pay input:checked+label .alipay{background-image:url({{.server}}/images/bby.png)}
     .weixinpay{background-image:url({{.server}}/images/bik.png)}
@@ -102,32 +102,6 @@
         </div>
     </div>
 </div>
-
 <script>
-const app = new Vue({
-    el: '#app',
-    data: {
-        donates:[],
-        settingDonate:{wechat:'',alipay:''},
-        net: {}
-    },
-    mounted () {
-        this.net = new Net("http://127.0.0.1:2333/api/v3/")
-        this.getDonate()
-    },
-    methods:{
-        getDonate(){
-            this.net.request("plugins/sponsors","GET").then((data)=>{
-                this.donates = data
-            })
-        },
-        donate (way) {
-            if (way === 'alipay') {
-                $('.paychoose').css('background-image', 'url(' + this.settingDonate.wechat + ')')
-            } else {
-                $('.paychoose').css('background-image', 'url(' + this.settingDonate.alipay + ')')
-            }
-        }
-    }
-});
+    new Vue({el:'#app',data:{donates:[],settingDonate:{wechat:'{{.wechat}}',alipay:'{{.alipay}}'},},mounted(){xy.net.server='/api/v3/';this.getDonate()},methods:{getDonate(){xy.net.request("plugins/sponsors","GET").then((data)=>{this.donates=data})},donate(way){if(way==='alipay'){$('.paychoose').css('background-image','url('+this.settingDonate.wechat+')')}else{$('.paychoose').css('background-image','url('+this.settingDonate.alipay+')')}}}});
 </script>

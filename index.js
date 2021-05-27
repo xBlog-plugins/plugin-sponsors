@@ -2,13 +2,16 @@
 const router =xBlog.router
 const database =xBlog.database
 const widget =xBlog.widget
-const file =xBlog.static
+// const file =xBlog.static
 const tools =xBlog.tools
 
 // 一些字段
 const dbSponsor = "donate"
+const keyAlipay = "alipay"
+const keyWechat = "wechat"
+const keyBackground = "donate_img"
 
-file.staticPath("images","images")
+// file.staticPath("images","images")
 
 // 获取所有赞助
 router.registerRouter("GET","",function(context){
@@ -36,20 +39,22 @@ router.registerRouter("GET","",function(context){
 })
 // 获取赞助数据
 widget.addPage({
-    background:"",
+    background: tools.getSetting(keyBackground),
     file:"index.html",
     headMeta: {
         title: "赞助博主",
     },
     css: ["element"],
-    script: ["vue","element","jquery","xiaoyou"],
+    script: ["vue","element","jquery"],
     url: "",
     full: false,
     side: false
 },function (){
     // 获取追番数据
     return {
-        server: "http://127.0.0.1:2333/static/sponsors"
+        server: "/plugins/static/sponsors",
+        alipay: tools.getSetting(keyAlipay),
+        wechat: tools.getSetting(keyWechat)
     }
 })
 
