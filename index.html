@@ -20,9 +20,9 @@
     .donate-box .choose-pay{display:flex;right:40%;position:absolute;bottom:0}
     .donate-box .choose-pay input{display:none}
     .donate-box .choose-pay input:checked+label{border-color:#0092ee;color:#0092ee}
-    .donate-box .pay-button{margin:10px 5px;border:1px solid #e6e6e6;text-align:center;line-height:0;cursor:pointer}
+    .donate-box .pay-buttons{margin:10px 5px;border:1px solid #e6e6e6;text-align:center;line-height:0;cursor:pointer}
     label{display:inline-block;max-width:100%;font-weight:700}
-    .donate-box .pay-button div{width:6em;height:6em}
+    .donate-box .pay-buttons div{width:6em;height:6em}
     .post-header{margin-bottom:20px;text-align:center}
     .posts-expand .post-title,.posts-expand .post-title-link{color:#444;font-size:25px;font-weight:700;text-align:center}
     #content{background:#fff;width:772px;margin-bottom:25px}
@@ -50,11 +50,11 @@
                         </h3>
                         <div class="choose-pay text-center">
                             <input id="alipay" type="radio" name="pay" checked="" />
-                            <div title="微信支付" for="alipay" class="pay-button" @click="donate(`alipay`)">
+                            <div title="微信支付" for="alipay" class="pay-buttons" @click="donate(`alipay`)">
                                 <div class="weixinpay"></div>
                             </div>
                             <input id="wechatpay" name="pay" type="radio" />
-                            <div title="支付宝" for="wechatpay" class="pay-button" @click="donate(`wechat`)">
+                            <div title="支付宝" for="wechatpay" class="pay-buttons" @click="donate(`wechat`)">
                                 <div class="alipay"></div>
                             </div>
                         </div>
